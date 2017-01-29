@@ -1,0 +1,67 @@
+<%= link_to("Back to previous page", {:controller => 'booking', :action => 'show_availability' , :id=>params[:id]}, :class => 'back-link') %>
+<%stylesheet_link_tag('application',:media=>'all')%>
+<div class="confirmation">
+ <h1>Booking Details Confirmation</h1>
+  <%= form_for(:booking, :url => {:action => 'confirmbooking', :id => params[:id],
+                :id2 => params[:id2],
+                :id3 => params[:id3],
+                :id4 => params[:id4],
+                :booking_id=> @booking_id,
+                :booking_member_id=>@booking_member_id
+                }) do |f| %>
+
+    <table summary="Subject form fields">
+
+       <%if @booking_status == "booked"%>
+           <%if session[:admin] %>
+              <%= puts "This room is booked for #{@booking_member_name}"%>
+              <%= puts "The member id is: #{@booking_member_id}"%>
+              <%= puts "The booking id is: #{@booking_id}"%>
+
+              <p>This room is booked for <%=@booking_member_name%>.However you can book the room for new user, the old booking will be cancelled</p>
+
+           <%else%>
+               <%= print "This room is booked for other user"%>
+               <p>This room is booked for other user.</p>
+           <% end%>
+
+       <% end %>
+
+      <tr>
+        <%if session[:admin] %>
+          <td>Email ID: </td>
+          <td><%= text_field_tag(:name) %></td>
+        <% end %>
+      </tr>
+      <tr>
+      	<td>Room: </td>
+      	<td><%=params[:id]   %></td>
+      </tr>
+      <tr>
+         <td> Date: </td>
+         <td><%=params[:id4]  %></td>
+     </tr>
+     <% time_slots = {1=>"7AM to 9AM",2=>"9AM to 11AM",3=>"11AM to 1PM",4=>"1PM to 3PM",5=>"3PM to 5PM",6=>"5PM to 7PM",7=>"7PM to  9PM", 8=>"9PM to 11PM"}
+	puts time_slots[params[:id3]]
+
+    %>
+    <tr>
+    	<td>Time: </td>
+    	<td><%=   time_slots[params[:id3].to_i]    %><td>
+    </tr>
+    </table>
+      <%if session[:admin]%>
+          <div class="form-buttons">
+            <%= submit_tag("Confirm") %>
+          </div>
+
+      <% else %>
+          <%if @booking_status=="available" %>
+            <div class="form-buttons">
+               <%= submit_tag("Confirm") %>
+             </div>
+          <%end%>
+      <%end%>
+
+  <% end %>
+</div>

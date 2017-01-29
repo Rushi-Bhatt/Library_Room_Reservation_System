@@ -1,0 +1,14 @@
+<% @page_title = "Admin Screen" %>
+
+<div class="menu">
+  <h2>Admin Screen </h2>
+  <i><div class="identity">Welcome Admin!</div></i>
+  <ul>
+  	<li><%= link_to("Edit Profile details", :controller => 'admin', :action => 'edit') %></li>
+    <li><%= link_to("Manage Admins", :controller => 'admin') %></li>
+    <li><%= link_to("Manage Rooms", :controller => 'room') %></li>
+    <li><%= link_to("Manage Members", :controller => 'members') %></li>
+    <li><%= link_to("Create Reservation", :controller => 'booking', :action=>'search') %></li>
+    <li><%= link_to("Logout", :action => 'logout') %></li>
+  </ul>
+</div>

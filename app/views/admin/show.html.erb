@@ -1,0 +1,34 @@
+
+<%= link_to("Back to previous page", {:controller => 'admin', :action => 'index'}, :class => 'back-link') %>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<div class="profile view">
+  <h2>View Profile Details</h2>
+
+  <table class="admin_details_form" summary="Admin form fields">
+    <tr>
+      <th>First Name:</th>
+      <td><%=@admin.first_name%></td>
+    </tr>
+    <tr>
+      <th>Last Name:</th>
+      <td><%=@admin.last_name%></td>
+    </tr>
+    <tr>
+      <th>DOB:</th>
+      <td><%=@admin.dob%></td>
+    </tr>
+    <tr>
+      <th>Gender:</th>
+      <td><%=@admin.gender%></td>
+    </tr>
+
+    <tr>
+      <th>Email ID:</th>
+      <td><%=@admin.email_id%></td>
+    </tr>
+
+  </table>
+</div>

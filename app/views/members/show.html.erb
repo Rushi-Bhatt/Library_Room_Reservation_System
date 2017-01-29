@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to("Back to previous page", {:controller => 'members', :action => 'index'}, :class => 'back-link') %>
+
+<div class="profile view">
+  <h2>View Profile Details</h2>
+
+      <table class="member_details_form" summary="Member form fields">
+        <tr>
+          <th>First Name:</th>
+          <td><%=@member.first_name%></td>
+        </tr>
+        <tr>
+          <th>Last Name:</th>
+          <td><%=@member.last_name%></td>
+        </tr>
+        <tr>
+          <th>DOB:</th>
+          <td><%=@member.dob%></td>
+        </tr>
+        <tr>
+          <th>Gender:</th>
+          <td><%=@member.gender%></td>
+        </tr>
+
+        <tr>
+          <th>Email ID:</th>
+          <td><%=@member.email_id%></td>
+        </tr>
+
+      </table>
+</div>
+

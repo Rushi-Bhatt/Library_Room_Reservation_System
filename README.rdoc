@@ -1,0 +1,37 @@
+== README
+
+Library Room Reservation Application
+A web application built using Ruby on Rails for online reservation or study rooms in a Library.
+
+Users can signup using their email id and password and then search for rooms based on location and size of the room. 
+After finding a room, he/she will be able to view the schedule of the room for a week in one screen. Time slots of two hours are available. The user can book a slot by clicking on it.
+Another screen is available in which the user can see all his/her bookings to date.
+The user is given an option to edit his/her profile details.
+
+Administrators can login and perform administrative functions like creating rooms, users and other admins. He will be given a view of all the users, rooms and admins and can easily manage them by clicking on appropriate links.
+He is also given an option of editing his/her profile details. Facility to book room on behalf of members has some bugs, it and will be corrected in the next release. 
+
+
+	Version : Ruby 2.2.4 and Rails 4.0
+	The App has been deployed on Heroku accessible on: https://library-reservation.herokuapp.com/
+
+
+Administrator Credentials
+
+Username: admin@ncsu.edu
+
+Password: ncsu
+
+
+
+In case of issues with login, please contact system administrators:
+
+aanilku@ncsu.edu,
+
+bbansal@ncsu.edu,
+
+rbhatt@ncsu.edu
+
+
+
+

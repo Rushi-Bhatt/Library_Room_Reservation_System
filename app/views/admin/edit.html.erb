@@ -1,0 +1,55 @@
+<%= link_to("Back to previous page", {:controller => 'access', :action => 'admin_view'}, :class => 'back-link') %>
+
+<div class="profile edit">
+  <h2>Edit Profile Details</h2>
+  <%= form_for(:admin, :url => {:action => 'update', :id => @admin.id}) do |f| %>
+      <table class="signup_form" summary="Admin form fields">
+        <tr>
+          <th><%= f.label("First Name")%></th>
+          <td><%= f.text_field(:first_name) %></td>
+        </tr>
+        <tr>
+          <th><%= f.label("Last Name") %></th>
+          <td><%= f.text_field(:last_name) %></td>
+        </tr>
+        <tr>
+          <th><%= f.label(:DOB) %></th>
+          <td class="dob_select"><%= f.date_select(:dob, prompt: {day: 'Day', month: 'Month', year: 'Year'}, :order => [:month, :day, :year],
+                                                   :start_year => 1910,
+                                                   :end_year => Date.today.year,
+                                     )%></td>
+        </tr>
+        <tr>
+          <th><%= f.label(:Gender) %></th>
+          <td>
+            <table class="radio_buttons">
+              <tr>
+                <td>Male</td>
+                <td class="radio"><%= f.radio_button(:gender,"Male") %></td>
+                <td>Female</td>
+                <td class="radio"><%= f.radio_button(:gender,"Female") %></td>
+                <td>Other</td>
+                <td class="radio"><%= f.radio_button(:gender,"Other") %></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <th><%= f.label("Email ID") %></th>
+          <td><%= f.text_field(:email_id) %></td>
+        </tr>
+
+        <tr style="display: none;">
+          <th>ID</th>
+          <td><%= f.text_field(:id) %></td>
+        </tr>
+      </table>
+
+
+      <div class="form-buttons">
+      <%= submit_tag("Save changes") %>
+    </div>
+
+  <% end %>
+</div>

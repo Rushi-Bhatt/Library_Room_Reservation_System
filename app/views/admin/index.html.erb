@@ -1,0 +1,42 @@
+<%= link_to("Back to previous page", {:controller => 'access', :action => 'admin_view'}, :class => 'back-link') %>
+<h1>Manage Admins</h1>
+<!--<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+-->
+<div class="subjects index">
+
+  <%= link_to("Create New Admins", {:action => 'new'}, :class => 'action new') %>
+  <br></br>
+
+  <br></br>
+  <style>
+  table, th, td{
+    border: 1px solid black;
+  }
+  </style>
+  <table style = "width:100%" class="listing" summary="Subject list">
+    <tr class="header">
+
+      <th>Name</th>
+      <th>Email</th>
+      <th> Actions</th>
+    </tr>
+    <% @admins.each do |admin| %>
+    <tr>
+
+      <td><%= [admin.first_name,admin.last_name].join(" ")%></td>
+
+
+      <td><%= admin.email_id %></td>
+      <td class="actions">
+        <%= link_to("Delete", {:controller => 'admin',:action => 'delete', :id => admin.id}) %>
+        <span class="WhiteSpace">  </span>
+        <%= link_to("View Profile",{:controller => 'admin',:action => 'show', :id => admin.id})%>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

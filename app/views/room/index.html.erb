@@ -1,0 +1,42 @@
+<%= link_to("Back to previous page", {:controller => 'access', :action => 'admin_view'}, :class => 'back-link') %>
+<h1>Manage Rooms</h1>
+<!--<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+-->
+<div class="room index">
+
+  <%= link_to("Create New Room", {:action => 'new'}, :class => 'action new') %>
+
+  <br>
+  <br>
+  <style>
+    table, th, td{
+      border: 1px solid black;
+    }
+  </style>
+  <table style = "width:100%" class="listing" summary="Subject list">
+    <tr class="header">
+
+      <th>Room</th>
+      <th>Building</th>
+      <th>Size</th>
+      <th>Actions</th>
+    </tr>
+    <% @rooms.each do |room| %>
+        <tr>
+          <td><%= room.room_number %></td>
+          <td><%= room.building %></td>
+          <td><%= room.size %></td>
+          <td class="actions">
+            <%= link_to("Delete", {:controller => 'room',:action => 'delete', :id => room.id}) %>
+            <span class="WhiteSpace">  </span>
+            <%= link_to("View Bookings",{:controller => 'booking',:action => 'show', :id => room.room_number})%>
+
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>

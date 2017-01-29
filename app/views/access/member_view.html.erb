@@ -1,0 +1,12 @@
+<% @page_title = "Member Screen" %>
+
+<div class="menu">
+  <h2>Member Screen </h2>
+  <i><div class="identity">Welcome Member!</div></i>
+  <ul>
+    <li><%= link_to("Edit Profile details", :controller => 'members', :action => 'edit') %></li>
+    <li><%= link_to("Create Reservation", :controller => 'booking', :action => 'search') %></li>
+    <li><%= link_to("View Reservations", :controller => 'booking', :action => 'view_bookings',:id=>session[:userid]) %></li>
+    <li><%= link_to("Logout", :action => 'logout') %></li>
+  </ul>
+</div>

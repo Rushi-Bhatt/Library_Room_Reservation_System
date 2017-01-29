@@ -1,0 +1,30 @@
+<%= link_to("<< Back to List", {:controller => 'access', :action => session[:admin]? 'admin_view' : 'member_view'}, :class => 'back-link') %>
+<%stylesheet_link_tag('application',:media=>'all')%>
+<div class="subjects edit">
+  <h2>Search Rooms</h2>
+
+  <%= form_for(:room, :url => {:action => 'list',:controller => 'booking'}) do |f| %>
+      <p>Location </p>
+
+
+      <%=select_tag(:location,options_for_select([["James B. Hunt Library","James.B.Hunt"],["D.H.Hill Library","D.H.Hill"]],0),options={:include_blank=>true})%>
+
+      </br>
+
+      <p> Capacity </p>
+
+      <%=select_tag(:capacity,options_for_select([["Small - 4 Chairs","Small(4-chairs)"],["Medium - 6 chairs","Medium(6-chairs)"],["Large - 12 chairs","Large(12-chairs)"]],0),options={:include_blank=>true})%>
+
+      <br>
+
+      <p> Room number</p>
+
+      <%= text_field_tag(:room_number_to_search)%>
+
+      <br>
+      <div class="form-buttons">
+        <%= submit_tag("Search Room") %>
+      </div>
+
+  <% end %>
+</div>

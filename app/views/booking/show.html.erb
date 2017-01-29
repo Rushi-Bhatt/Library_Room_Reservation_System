@@ -1,0 +1,39 @@
+<%= link_to("Back to previous page", {:controller => 'room', :action => 'index'}, :class => 'back-link') %>
+<%stylesheet_link_tag('application',:media=>'all')%>
+<h1>View Bookings</h1>
+<!--<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+-->
+<% time_slots = {1=>"7AM to 9AM",2=>"9AM to 11AM",3=>"11AM to 1PM",
+                 4=>"1PM to 3PM",5=>"3PM to 5PM",6=>"5PM to 7PM",7=>"7PM to  9PM", 8=>"9PM to 11PM"}
+%>
+<div class="view index">
+
+  <p>Bookings for room <%= @showing_for_room%></p>
+  <br>
+  <style>
+    table, th, td{
+      border: 1px solid black;
+    }
+  </style>
+  <table style = "width:100%" class="listing" summary="Subject list">
+    <tr class="header">
+
+      <th>Date</th>
+      <th>Time</th>
+      <th>Action</th>
+    </tr>
+    <% @all_bookings.each do |booking| %>
+        <tr>
+
+          <td><%= booking.date %></td>
+          <td><%= time_slots[booking.slot] %></td>
+          <td><%= link_to("Delete",:action=>"delete",:controller => "booking",:id=>booking.id, :room_number=>booking.room_number,:id2=>"Room")%></td>
+
+        </tr>
+    <% end %>
+  </table>
+</div>

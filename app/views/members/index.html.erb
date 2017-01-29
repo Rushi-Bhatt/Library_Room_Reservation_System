@@ -1,0 +1,39 @@
+<%= link_to("Back to previous page", {:controller => 'access', :action => 'admin_view'}, :class => 'back-link') %>
+<h1>Manage Members</h1>
+<!--<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+-->
+<div class="member index">
+
+  <p>List of All Members</p>
+  <br>
+  <style>
+    table, th, td{
+      border: 1px solid black;
+    }
+  </style>
+  <table style = "width:100%" class="listing" summary="Subject list">
+    <tr class="header">
+
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    <% @members.each do |member| %>
+        <tr>
+          <td><%= [member.first_name, member.last_name].join(" ") %></td>
+          <td><%= member.email_id %></td>
+          <td class="actions">
+                  <%= link_to("Delete", {:controller => 'members',:action => 'delete', :id => member.id}) %>
+                  <span class="WhiteSpace">  </span>
+                  <%= link_to("View Profile",{:controller => 'members',:action => 'show', :id => member.id})%>
+                  <span class="WhiteSpace">  </span>
+                  <%= link_to("View Reservations",{:controller => 'booking',:action => 'view_bookings', :id => member.id})%>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>

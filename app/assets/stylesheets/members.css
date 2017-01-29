@@ -1,0 +1,15 @@
+.dob_select select{
+    width:95px;
+    margin-top:0px;
+    height:28px;
+}
+.signup_form label{
+    text-align: left;
+    padding-right: 10px;
+}
+.radio_buttons .radio{
+    margin-right: 20px;
+}
+.WhiteSpace{
+    padding-left: 30px;
+}

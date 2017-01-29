@@ -1,0 +1,131 @@
+<%= link_to("<< Back to List", {:action => 'search'}) %>
+<%stylesheet_link_tag('application',:media=>'all')%>
+<h1>Room Availability</h1>
+<!--<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+-->
+<div class="subjects index">
+
+
+  <br></br>
+
+  <p>Showing availability for room <%= @current_room_id%></p>
+  <br></br>
+  <style>
+    table, th, td{
+      border: 1px solid black;
+    }
+  </style>
+  <table style = "width:100%" class="listing" summary="Subject list">
+    <tr class="header">
+      <th></th>
+      <th>7 AM to 9 AM </th>
+      <th>9 AM to 11 AM </th>
+      <th>11 AM to 1 PM </th>
+      <th>1 PM to 3 PM </th>
+      <th>3 PM to 5 PM </th>
+      <th>5 PM to 7 PM </th>
+      <th>7 PM to 9 PM </th>
+      <th>9 PM to 11 PM </th>
+    </tr>
+    <% (0..6).each do |i| %>
+        <tr>
+
+          <td><%=@current_date+i%></td>
+          <td>
+            <%=
+            link_to(@slots_array[i*8][:status], :action => 'book',:controller=> 'booking',
+                       :id => @current_room_id,
+                       :id2=> @current_user_id,
+                       :id3 => @slots_array[i*8][:slot],
+                       :id4 =>@slots_array[i*8][:date],
+                       :id5 =>@slots_array[i*8][:status]
+               )%>
+          </td>
+
+
+          <td>
+            <%=link_to(@slots_array[i*8+1][:status], :action => 'book',:controller=> 'booking',
+                       :id => @current_room_id,
+                       :id2=> @current_user_id,
+                       :id3 => @slots_array[i*8+1][:slot],
+                       :id4 =>@slots_array[i*8+1][:date],
+                       :id5 =>@slots_array[i*8+1][:status]
+               )%>
+          </td>
+
+
+          <td>
+            <%=link_to(@slots_array[i*8+2][:status], :action => 'book',:controller=> 'booking',
+                       :id => @current_room_id,
+                       :id2=> @current_user_id,
+                       :id3 => @slots_array[i*8+2][:slot],
+                       :id4 =>@slots_array[i*8+2][:date],
+                       :id5 =>@slots_array[i*8+2][:status]
+               )%>
+          </td>
+
+
+          <td>
+            <%=link_to(@slots_array[i*8+3][:status], :action => 'book',:controller=> 'booking',
+                       :id => @current_room_id,
+                       :id2=> @current_user_id,
+                       :id3 => @slots_array[i*8+3][:slot],
+                       :id4 =>@slots_array[i*8+3][:date],
+                       :id5 =>@slots_array[i*8+3][:status]
+               )%>
+          </td>
+
+          <td>
+            <%=link_to(@slots_array[i*8+4][:status], :action => 'book',:controller=> 'booking',
+                       :id => @current_room_id,
+                       :id2=> @current_user_id,
+                       :id3 => @slots_array[i*8+4][:slot],
+                       :id4 =>@slots_array[i*8+4][:date],
+                       :id5 =>@slots_array[i*8+4][:status]
+               )%>
+          </td>
+
+          <td>
+            <%=link_to(@slots_array[i*8+5][:status], :action => 'book',:controller=> 'booking',
+                       :id => @current_room_id,
+                       :id2=> @current_user_id,
+                       :id3 => @slots_array[i*8+5][:slot],
+                       :id4 =>@slots_array[i*8+5][:date],
+                       :id5 =>@slots_array[i*8+5][:status]
+               )%>
+          </td>
+
+
+          <td>
+            <%=link_to(@slots_array[i*8+6][:status], :action => 'book',:controller=> 'booking',
+                       :id => @current_room_id,
+                       :id2=> @current_user_id,
+                       :id3 => @slots_array[i*8+6][:slot],
+                       :id4 =>@slots_array[i*8+6][:date],
+                       :id5 =>@slots_array[i*8+6][:status]
+               )%>
+          </td>
+
+
+          <td>
+            <%=link_to(@slots_array[i*8+7][:status], :action => 'book',:controller=> 'booking',
+                       :id => @current_room_id,
+                       :id2=> @current_user_id,
+                       :id3 => @slots_array[i*8+7][:slot],
+                       :id4 =>@slots_array[i*8+7][:date],
+                       :id5 =>@slots_array[i*8+7][:status]
+               )%>
+          </td>
+
+
+
+
+
+        </tr>
+    <% end %>
+  </table>
+</div>

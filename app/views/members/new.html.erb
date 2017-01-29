@@ -1,0 +1,60 @@
+
+<%= link_to("<< Back to login screen", {:controller => 'access',:action => 'login'}, :class => 'back-link') %>
+
+<div class="New Member">
+  <h2>Welcome New User. Please sign up!</h2>
+
+  <%= form_for(:member, :url => {:action => 'create'}) do |f| %>
+
+      <table class="signup_form" summary="Member form fields">
+        <tr>
+          <th><%= f.label("First Name")%></th>
+          <td><%= f.text_field(:first_name) %></td>
+        </tr>
+        <tr>
+          <th><%= f.label("Last Name") %></th>
+          <td><%= f.text_field(:last_name) %></td>
+        </tr>
+        <tr>
+          <th><%= f.label(:DOB) %></th>
+          <td class="dob_select"><%= f.date_select(:dob, prompt: {day: 'Day', month: 'Month', year: 'Year'}, :order => [:month, :day, :year],
+                                                   :start_year => 1910,
+                                                   :end_year => Date.today.year,
+                                     )%></td>
+        </tr>
+        <tr>
+          <th><%= f.label(:Gender) %></th>
+          <td>
+            <table class="radio_buttons">
+              <tr>
+                <td>Male</td>
+                <td class="radio"><%= f.radio_button(:gender,"Male") %></td>
+                <td>Female</td>
+                <td class="radio"><%= f.radio_button(:gender,"Female") %></td>
+                <td>Other</td>
+                <td class="radio"><%= f.radio_button(:gender,"Other") %></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <th><%= f.label("Email ID") %></th>
+          <td><%= f.text_field(:email_id) %></td>
+        </tr>
+        <tr>
+          <th><%= f.label(:Password) %></th>
+          <td><%= f.password_field(:password) %></td>
+        </tr>
+        <tr>
+          <th><%= f.label("Confirm Password") %></th>
+          <td><%= f.password_field(:password_confirmation) %></td>
+        </tr>
+      </table>
+
+      <div class="form-buttons">
+        <%= submit_tag("Sign Up ") %>
+      </div>
+
+  <% end %>
+</div>

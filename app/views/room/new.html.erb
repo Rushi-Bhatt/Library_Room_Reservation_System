@@ -1,0 +1,38 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="New Room">
+  <h2>Create New Room</h2>
+
+  <%= form_for(:room, :url => {:action => 'create'}) do |f| %>
+
+  <table summary="Room form fields">
+   <tr>
+     <th>Room number</th>
+     <td><%= f.text_field(:room_number) %></td>
+   </tr>
+   <tr>
+     <th>Building</th>
+     <td>
+       <%= f.select "building", "<option value=""> </option>
+                          <option value='D.H.Hill'>D.H.Hill</option>
+                          <option value='James.B.Hunt'>James.B.Hunt</option>".html_safe %>
+     </td>
+   </tr>
+   <tr>
+     <th>Size</th>
+     <td>
+       <%= f.select "size", "<option value = ""></option>
+                        <option value = 'Small(4-chairs)'>Small - 4 Chairs</option>
+                        <option value = 'Medium(6-chairs)'>Medium - 6 Chairs</option>
+                        <option value = 'Large(12-chairs)'>Large - 12 Chairs</option>".html_safe %>
+     </td>
+   </tr>
+ </table>
+
+
+      <div class="form-buttons">
+        <%= submit_tag("Create Room") %>
+      </div>
+
+  <% end %>
+</div>
